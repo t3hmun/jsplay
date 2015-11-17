@@ -11,7 +11,7 @@ this.isTopThisWhichIsExports = true;
 console.log('\ntop `this` with a property added:');
 console.log(this);
 
-// `this` does not change if obA is decalared without `var`
+// `this` does not change if obA is decalared without `var` (try it).
 var obA = {
   a: 'string in obA',
   // `this` is exports, not `obA`.
@@ -79,7 +79,7 @@ var something = {
 };
 
 // Must call function otherwise the implicit global will not be defined.
-something.funcWithImplicitGlobal();  //eslint-disable-line no-undef
+something.funcWithImplicitGlobal(); //eslint-disable-line no-undef
 
 // In browsers global === Window
 // The this that ` === exports ` in node `=== global` in browsers.
