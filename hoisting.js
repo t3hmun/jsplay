@@ -12,38 +12,32 @@ This is hoisting.
 
 */
 
-
 // The following 5 statements will work in any order.
-decfirst(true)
+decfirst(true);
 decsecond(true);
 decthird(decfourth);
 decfourth(decthird);
 decthird(decthird);
 
-function decfirst (docall) {
-    console.log('first');
-    if(docall) decsecond();
+function decfirst(docall) {
+  console.log('first');
+  if (docall) decsecond();
 }
 
-function decsecond (docall) {
-    console.log('second');
-    if(docall) decfirst();
+function decsecond(docall) {
+  console.log('second');
+  if (docall) decfirst();
 }
 
-function decthird (callme) {
-    console.log('third');
-    if(callme) callme();
+function decthird(callme) {
+  console.log('third');
+  if (callme) callme();
 }
 
-function decfourth (callme) {
-    console.log('fourth');
-    if(callme) callme();
+function decfourth(callme) {
+  console.log('fourth');
+  if (callme) callme();
 }
-
-
-
-
-
 
 // Cant do the next line, it would have a Reference Error. Implicit globals are not hoisted.
 //console.log('implicit: ' + implicitGlobalVar);
@@ -59,11 +53,11 @@ console.log('implicit: ' + implicitGlobalVar);
 console.log('good: ' + goodGlobalVar);
 console.log('confusing:' + confusingGlobalVar);
 
-function naughty(){
-    console.log('naughty');
-    implicitGlobalVar = 'implicit (naughty)';
-    goodGlobalVar = 'good (naughty)';
-    confusingGlobalVar = 'confusing (naughty)';
+function naughty() {
+  console.log('naughty');
+  implicitGlobalVar = 'implicit (naughty)';
+  goodGlobalVar = 'good (naughty)';
+  confusingGlobalVar = 'confusing (naughty)';
 }
 
 var goodGlobalVar;
