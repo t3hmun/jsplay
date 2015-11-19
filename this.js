@@ -33,6 +33,8 @@ var obA = {
       }
     };
 
+    function notMethod(){return this;}
+
     console.log('\nobB is an object in a function in object obA.');
     console.log('`this` from obB property (`bthis: this `):');
     console.log(obB.bthis);
@@ -42,6 +44,12 @@ var obA = {
 
     console.log('\nobA.athis (`athis: this`) returned from obB method:');
     console.log(obB.athisFrombFunc());
+
+    console.log('\n`this` returned by top level function called from a function in obA');
+    console.log('is global : ' + (global===retThisFunc()));
+
+    console.log('\n`this` a function in a function in obA');
+    console.log('is global : ' + (global===notMethod()));
   }
 };
 
