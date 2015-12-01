@@ -2,13 +2,19 @@
 
 Javascript is not interpreted naively line by line.
 In Javascript we can say:
- * A var is declared in a scope `var x;` or `function ... (...){...}`
- * A var is defined with a value `x = 5;` or `x = function(...){...}`
+ * A var is declared in a scope `var x;
+ * A var is defined with a value `x = <expression>;`
 The declaring and defining are 2 separate things.
 This means `var x = 5;` is really 2 lines of code.
 
 In each scope, the declarations are pushed to the top.
-This is hoisting.
+This is variable hoisting.
+
+Named function deccalrations are hoisted differently:
+`function <name> (<args>){<code>}`
+The decalaration and definition is NOT equivalent to creating a var and then
+ assigning a value (`var func = function(<args>){<code>};`).
+The entire statement is hoisted, so the function is never `undefined`.
 
 */
 
@@ -60,8 +66,11 @@ function naughty() {
   confusingGlobalVar = 'confusing (naughty)';
 }
 
+// In Node.Js this would be current function scope
+// In browsers it becomes a global property.
 var goodGlobalVar;
 var confusingGlobalVar = 'confusing (decalration)';
+
 
 // The assignment of this var was not hoisted so it happens where you see it.
 // Only the declaration bit was hoisted.
